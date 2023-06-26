@@ -1,24 +1,27 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import GetAllBooksComponent from './components/GetAllBooksComponent/GetAllBooksComponent';
+import AddNewBooksComponent from './components/AddNewBookscomponent/AddNewBooksComponent';
+import EditBooksComponent from './components/EditBooksComponent/EditBooksComponent';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+            <div className="container">
+              <h1>Library App</h1>
+              
+            <nav className="nav-menu">
+                <Link to="/" >Home</Link>
+                <Link to="/admin/add" >Add Books</Link>
+                <Link to="/admin/edit" >Edit Books</Link>
+            </nav>
+           <Routes>
+                 <Route exact path='/' element={<GetAllBooksComponent/>}></Route>
+                 <Route path='/admin/add' element={<AddNewBooksComponent/>}></Route>
+                 <Route path='/admin/edit' element={<EditBooksComponent/>}></Route>
+          </Routes>
+          </div>
+       </Router>
   );
 }
 
